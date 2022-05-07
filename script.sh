@@ -3,7 +3,7 @@ role="${1:-test_role}"
 
 #creating the ansible directory, playbook, ansible.cfg, and inventory
 
-mkdir -p ansible/inventory && cd ansible
+mkdir -p ansible/inventory && cd ansible && mkdir roles
 
 files="main.yml ansible.cfg inventory/all"
 for file in $files; do
@@ -22,12 +22,12 @@ dirs="defaults tasks templates handlers"
 
 #craeting the directories and files
 for dir in $dirs; do
-mkdir -p "$role/$dir"
+mkdir -p "roles/$role/$dir"
 if [[ "$dir" == 'templates' ]]; then
-touch "$role/$dir/main.yml.j2"
+touch "roles/$role/$dir/main.yml.j2"
 continue
 fi
-touch "$role/$dir/main.yml"
+touch "roles/$role/$dir/main.yml"
 done
 
 cat <<EOF  >> main.yml
