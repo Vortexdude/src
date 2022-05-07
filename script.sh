@@ -1,9 +1,8 @@
 #!/bin/bash
 role="${1:-test_role}"
 
-echo "Your role is $role is created Succesfully "
-
 #creating the ansible directory, playbook, ansible.cfg, and inventory
+
 mkdir -p ansible/inventory && cd ansible
 
 files="main.yml ansible.cfg inventory/all"
@@ -38,3 +37,5 @@ cat <<EOF  >> main.yml
     - { role: $role }
 
 EOF
+
+echo "Your role is $role is created Succesfully "
