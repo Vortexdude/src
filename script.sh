@@ -1,12 +1,27 @@
 #!/bin/bash
 role="${1:-test_role}"
 
-echo $role
-mkdir -p ansible && cd ansible && touch main.yml
+echo "Your role is $role is created Succesfully "
 
+#creating the ansible directory, playbook, ansible.cfg, and inventory
+mkdir -p ansible/inventory && cd ansible
+
+files="main.yml ansible.cfg inventory/all"
+for file in $files; do
+touch $file
+done
+
+cat <<EOF >> ansible.cfg
+[defaults]
+callback_whitelist = profile_tasks
+inventory = inventory/all
+
+EOF
+
+# list of directories
 dirs="defaults tasks templates handlers"
 
-#craeting the directories
+#craeting the directories and files
 for dir in $dirs; do
 mkdir -p "$role/$dir"
 if [[ "$dir" == 'templates' ]]; then
@@ -16,7 +31,7 @@ fi
 touch "$role/$dir/main.yml"
 done
 
-cat <<EOF  >> ../ansible/main.yml
+cat <<EOF  >> main.yml
 - host: localhost
   become: true
   roles:
