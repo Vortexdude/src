@@ -37,5 +37,5 @@ cat <<EOF  >> main.yml
   roles:
     - { role: $role }
 EOF
-done
 echo "Your role is $role is created Succesfully "
+done
