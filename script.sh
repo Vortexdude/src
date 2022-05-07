@@ -1,5 +1,5 @@
 #!/bin/bash
-role="${1:-test_role}"
+roles="${@:-test_role}"
 
 #creating the ansible directory, playbook, ansible.cfg, and inventory
 
@@ -17,6 +17,8 @@ inventory = inventory/all
 
 EOF
 
+for role in $roles; do
+
 # list of directories
 dirs="defaults tasks templates handlers"
 
@@ -29,13 +31,11 @@ continue
 fi
 touch "roles/$role/$dir/main.yml"
 done
-
+done
 cat <<EOF  >> main.yml
 - host: localhost
   become: true
   roles:
     - { role: $role }
-
 EOF
-
 echo "Your role is $role is created Succesfully "
