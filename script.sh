@@ -31,11 +31,11 @@ continue
 fi
 touch "roles/$role/$dir/main.yml"
 done
-done
 cat <<EOF  >> main.yml
 - host: localhost
   become: true
   roles:
     - { role: $role }
 EOF
+done
 echo "Your role is $role is created Succesfully "
