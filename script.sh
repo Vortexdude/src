@@ -34,7 +34,7 @@ done
 echo "Your role is $role is created Succesfully "
 done
 cat <<EOF  >> main.yml
-- host: localhost
+- hosts: localhost
   become: true
   roles:
 EOF
