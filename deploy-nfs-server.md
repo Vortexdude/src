@@ -4,7 +4,8 @@
 The Deployment of the NFS servers done by the terraform and the server configuration we used ansible.
 </br>
 In the terraform/templates/nfs-cluster we used terraform.tfvars file to launch and manage the servers
-the tfvar file is given here
+</br>
+The tfvar file is given here
 
 ``` terraform
 NFS_MASTER_INSTANCE_NAME = "ipt-fr-nfs-cluster-master-tf"
@@ -41,7 +42,7 @@ NFS_NODES_DETAILS = [
 APPEND_NODE_TO_CLUSTER = false
 ```
 
-In the var file the variable **NFS_NODES_DETAILS** hold the all cluster node details like count of the server name zone subnet id and volume name </br>
+In the var file the variable **NFS_NODES_DETAILS** hold the all cluster node details like count of the server, name, zone, subnet id and volume name </br>
 
 ### Append a new node
 
