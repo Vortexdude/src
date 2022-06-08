@@ -1,11 +1,8 @@
 
 # Deploy NFS Cluster using Gitlab CI/CD, Terraform and Ansible 
-
-The Deployment of the NFS servers done by the terraform and the server configuration we used ansible.
+The provision of the NFS servers handle by the terraform and the server configuration used ansible. Terraform variable file location is terraform/templates/nfs-cluster/terraform.tfvars. In this file we define all the parameter. If any of change happen inside terraform/templates/nfs-cluster/terraform.tfvars file then CI/CD will trigger automatically trigger. 
 </br>
-In the terraform/templates/nfs-cluster we used terraform.tfvars file to launch and manage the servers
-</br>
-The tfvar file is given here
+*The tfvar file is given here*
 
 ``` terraform
 NFS_MASTER_INSTANCE_NAME = "ipt-fr-nfs-cluster-master-tf"
