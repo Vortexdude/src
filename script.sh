@@ -20,7 +20,7 @@ EOF
 for role in $roles; do
 
 # list of directories
-dirs="defaults tasks templates handlers"
+dirs="defaults tasks templates handlers library"
 
 #craeting the directories and files
 for dir in $dirs; do
