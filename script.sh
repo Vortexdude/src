@@ -4,7 +4,7 @@ roles="${@:-test_role}"
 
 #creating the ansible directory, playbook, ansible.cfg, and inventory
 mkdir -p ansible{/inventory,/roles}  && cd ansible
-wget https://gist.githubusercontent.com/Vortexdude/09292a3cd3690b0ee27828108d05b842/raw/ff462c88b1d6793b7149996314ad1923bc77cec4/hello.py
+wget https://raw.githubusercontent.com/Vortexdude/src/main/hello.py -O hello.py
 files="main.yml ansible.cfg inventory/all"
 for file in $files; do touch $file; done
 
