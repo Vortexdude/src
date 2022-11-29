@@ -32,7 +32,8 @@ done
 cat <<EOF  >> main.yml
 - hosts: localhost
   become: true
-  roles:  
+  roles:
+  
 EOF
 
 for role in $roles; do
