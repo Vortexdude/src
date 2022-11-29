@@ -24,7 +24,7 @@ for role in $roles; do
   for dir in $dirs; do
     mkdir -p "roles/$role/$dir"
     if [[ "$dir" == 'templates' ]]; then touch "roles/$role/$dir/server.conf.j2" && continue; fi
-    if [[ "$dir" == 'library' ]]; wget https://raw.githubusercontent.com/Vortexdude/src/main/hello.py -O roles/$role/$dir/hello.py && continue; fi
+    if [[ "$dir" == 'library' ]]; then wget https://raw.githubusercontent.com/Vortexdude/src/main/hello.py -O roles/$role/$dir/hello.py && continue; fi
     touch "roles/$role/$dir/main.yml"
   done
   echo "Your role is $role is created Succesfully "
