@@ -24,6 +24,7 @@ for role in $roles; do
   for dir in $dirs; do
     mkdir -p "roles/$role/$dir"
     if [[ "$dir" == 'templates' ]]; then touch "roles/$role/$dir/server.conf.j2" && continue; fi
+    if [[ "$dir" == 'library' ]]; then git clone https://gist.github.com/Vortexdude/09292a3cd3690b0ee27828108d05b842 "roles/$role/$dir" && continue; fi
     touch "roles/$role/$dir/main.yml"
   done
   echo "Your role is $role is created Succesfully "
@@ -39,3 +40,6 @@ cat << EOF >>main.yml
     - { role: $role }
 EOF
 done
+
+
+
