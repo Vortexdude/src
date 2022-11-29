@@ -1,8 +1,8 @@
 #!/bin/bash
 roles="${@:-test_role}"
+custom_module="https://gist.githubusercontent.com/Vortexdude/09292a3cd3690b0ee27828108d05b842/raw/ff462c88b1d6793b7149996314ad1923bc77cec4/hello.py"
 
 #creating the ansible directory, playbook, ansible.cfg, and inventory
-
 mkdir -p ansible{/inventory,/roles}  && cd ansible
 
 files="main.yml ansible.cfg inventory/all"
@@ -24,7 +24,7 @@ for role in $roles; do
   for dir in $dirs; do
     mkdir -p "roles/$role/$dir"
     if [[ "$dir" == 'templates' ]]; then touch "roles/$role/$dir/server.conf.j2" && continue; fi
-    if [[ "$dir" == 'library' ]]; then git clone https://gist.github.com/Vortexdude/09292a3cd3690b0ee27828108d05b842 "roles/$role/$dir" && rm -rf roles/$role/$dir/.git && continue; fi
+    if [[ "$dir" == 'library' ]]; then wget "${custom_module}" "roles/$role/$dir" && rm -rf roles/$role/$dir/.git && continue; fi
     touch "roles/$role/$dir/main.yml"
   done
   echo "Your role is $role is created Succesfully "
@@ -41,7 +41,6 @@ cat << EOF >>main.yml
     - { role: $role }
 EOF
 done
-
 
 cat <<EOF  >> main.yml
   tasks:
