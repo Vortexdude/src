@@ -25,7 +25,7 @@ for role in $roles; do
     mkdir -p "roles/$role/$dir"
     if [[ "$dir" == 'templates' ]]; then touch "roles/$role/$dir/server.conf.j2" && continue; fi
     if [[ "$dir" == 'library' ]]; then wget https://raw.githubusercontent.com/Vortexdude/src/main/hello.py -O roles/$role/$dir/hello.py && continue; fi
-    if [[ "$dir" = 'tasks' ]];
+    if [[ "$dir" = 'tasks' ]]; then
 cat <<EOF  >> roles/$role/$dir/main.yml
 - name: run the new module
   hello:
@@ -37,8 +37,8 @@ cat <<EOF  >> roles/$role/$dir/main.yml
     msg: '{{ testout }}'
   
 EOF
-    continue
-    fi
+continue
+fi
     
     touch "roles/$role/$dir/main.yml"
   done
