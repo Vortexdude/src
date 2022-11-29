@@ -4,7 +4,7 @@ roles="${@:-test_role}"
 
 #creating the ansible directory, playbook, ansible.cfg, and inventory
 mkdir -p ansible{/inventory,/roles}  && cd ansible
-wget https://raw.githubusercontent.com/Vortexdude/src/main/hello.py -O hello.py
+
 files="main.yml ansible.cfg inventory/all"
 for file in $files; do touch $file; done
 
@@ -24,7 +24,7 @@ for role in $roles; do
   for dir in $dirs; do
     mkdir -p "roles/$role/$dir"
     if [[ "$dir" == 'templates' ]]; then touch "roles/$role/$dir/server.conf.j2" && continue; fi
-    #if [[ "$dir" == 'library' ]]; then mv hello.py roles/$role/$dir/ && continue; fi
+    #if [[ "$dir" == 'library' ]]; wget https://raw.githubusercontent.com/Vortexdude/src/main/hello.py -O roles/$role/$dir/hello.py && continue; fi
     touch "roles/$role/$dir/main.yml"
   done
   echo "Your role is $role is created Succesfully "
