@@ -27,12 +27,12 @@ for role in $roles; do
     if [[ "$dir" == 'library' ]]; then wget https://raw.githubusercontent.com/Vortexdude/src/main/hello.py -O roles/$role/$dir/hello.py && continue; fi
     if [[ "$dir" = 'tasks' ]]; then
 cat <<EOF  >> "roles/$role/$dir/main.yml"
-- name: run the new module
+- name: New hello module
   hello:
     name: 'hello'
     new: true
   register: testout
-- name: dump test output
+- name: output of the hello command
   debug:
     msg: '{{ testout }}'
   
