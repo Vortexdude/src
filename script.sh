@@ -36,8 +36,8 @@ for role in $roles; do
   debug:
     msg: '{{ testout }}'
   
-EOF;
-continue
+    EOF
+    continue
     fi
     
     touch "roles/$role/$dir/main.yml"
