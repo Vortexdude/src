@@ -108,7 +108,7 @@ def run_module():
     # manipulate or modify the state as needed (this is going to be the
     # part where your module will do what it needs to do)
     result['original_message'] = module.params['name']
-    result['message'] = 'goodbye'
+    result['message'] = 'This messages came from ansible module'
 
     # use whatever logic you need to determine whether or not this module
     # made any modifications to your target
