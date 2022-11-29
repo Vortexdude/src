@@ -87,6 +87,7 @@ def run_module():
     result = dict(
         changed=False,
         original_message='',
+        module_path='',
         message=''
     )
 
@@ -109,6 +110,7 @@ def run_module():
     # part where your module will do what it needs to do)
     result['original_message'] = module.params['name']
     result['message'] = 'This messages came from ansible module'
+    result['module_path'] = 'roles/name/library/hello.py'
 
     # use whatever logic you need to determine whether or not this module
     # made any modifications to your target
