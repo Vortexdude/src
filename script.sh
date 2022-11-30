@@ -15,6 +15,7 @@ cat <<EOF >> ansible.cfg
 [defaults]
 callback_whitelist = profile_tasks
 inventory = inventory/all
+stdout_callback = yaml
 
 EOF
 
