@@ -11,7 +11,7 @@
   tasks:
     - user:
         name: "{{ item.name }}"
-        password: "{{ item.passsword | hash_password('512') }}"
+        password: "{{ item.passsword | password_hash('512') }}"
         gropus: "{{ item.name }}"
       with_items: "{{ users }}"
     - shell: adduser {{ item }} sudo
