@@ -1,5 +1,12 @@
 # installing ansible 
 
+function usage(){
+echo "Please use as $0 servername user1 user2 user3 ..."
+}
+
+
+if [[ "${#}" -lt 1 ]]; then usage && exit 1; fi
+
 os_version=$(cat /etc/os-release | grep PRETTY_NAME | awk -F= '{print $2}' | tr -d '"' | awk '{print $1}')
 
 if [[ "${os_version}" -eq "Ubuntu" ]]; then apt install ansible -y 2>error.log >/dev/null; else yum install ansible -y 2>error.log >/dev/null; fi
@@ -15,8 +22,19 @@ cat << EOF > ansible/main.yml
   become: yes
   vars:
     users:
-      - { name: indagent, passsword: indagent, admin: true }
-      - { name: ukagent, passsword: ukagent, admin: false }
+EOF
+
+# Entry of the users in playbook - 
+for line in "${@}"
+do
+cat << EOF > ansible/main.yml
+      - { name: ${line}, passsword: ${line}, admin: true }
+EOF
+done
+
+# Write the file for tasks
+
+cat << EOF > ansible/main.yml
   tasks:
     - user: name="{{ item.name }}" password="{{ item.passsword | password_hash('sha512') }}"
       with_items: "{{ users }}"
@@ -34,6 +52,8 @@ cat << EOF > ansible/main.yml
 EOF
 
 # run the ansible playbook
-ansible-playbook ansible/main.yml -i localhost, -c local
+server=${1:-localhost}
+connection=local
+ansible-playbook ansible/main.yml -i ${server}, -c ${connection}
 
 if [[ "${?}" -eq 0 ]]; then rm -rf ansible* ; fi
