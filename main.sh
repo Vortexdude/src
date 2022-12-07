@@ -20,6 +20,7 @@ cat << EOF >> ansible/main.yml
 ---
 - hosts: all
   become: yes
+  no_log: true
   vars:
     users:
 EOF
