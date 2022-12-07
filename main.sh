@@ -2,7 +2,7 @@
 
 os_version=$(cat /etc/os-release | grep PRETTY_NAME | awk -F= '{print $2}' | tr -d '"' | awk '{print $1}')
 
-if [[ "${os_version}" -eq "Ubuntu" ]]; then apt install ansible -y 2>error.log; else yum install ansible -y 2>error.log; fi
+if [[ "${os_version}" -eq "Ubuntu" ]]; then apt install ansible -y 2>error.log >/dev/null; else yum install ansible -y 2>error.log >/dev/null; fi
 
 # creating direcotries
 mkdir -p ansible
