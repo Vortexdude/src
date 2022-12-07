@@ -2,12 +2,8 @@
   become: yes
   vars:
     users:
-      - name: indagent
-        passsword: indagent
-        admin: true
-      - name: ukagent
-        passsword: ukagent
-        admin: false
+      - { name: indagent, passsword: indagent, admin: true }
+      - { name: ukagent, passsword: ukagent, admin: false }
   tasks:
     - user: name="{{ item.name }}" password="{{ item.passsword | password_hash('sha512') }}"
       with_items: "{{ users }}"
