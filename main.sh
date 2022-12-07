@@ -1,3 +1,16 @@
+# installing ansible 
+
+os_version=$(cat /etc/os-release | grep PRETTY_NAME | awk -F= '{print $2}' | tr -d '"' | awk '{print $1}')
+
+if [[ "${os_version}" -eq "Ubuntu" ]]; then apt install ansible -y 2>error.log; else yum install ansible -y 2>error.log; fi
+
+# creating direcotries
+mkdir -p ansible
+> ansible/main.yml
+
+# Creating files content
+cat << EOF > ansible/main.yml
+---
 - hosts: all
   become: yes
   vars:
@@ -17,3 +30,10 @@
       register: sshconfig
     - service: name=sshd state=restarted
       when: sshconfig.changed
+
+EOF
+
+# run the ansible playbook
+ansible-playbook ansible/main.yml -i localhost, -c local
+
+if [[ "${?}" -eq 0 ]]; then rm -rf ansible/* ; fi
