@@ -15,7 +15,7 @@
         gropus: "{{ item.name }}"
       with_items: "{{ users }}"
     - shell: adduser {{ item }} sudo
-      with_items: "{{ users }}
+      with_items: "{{ users }}"
       when: item.admin | bool 
     - stat:
         path: /etc/ssh/sshd_config.d/50-cloudimg-settings.conf
