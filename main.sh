@@ -16,7 +16,7 @@ mkdir -p ansible
 > ansible/main.yml
 
 # Creating files content
-cat << EOF > ansible/main.yml
+cat << EOF >> ansible/main.yml
 ---
 - hosts: all
   become: yes
