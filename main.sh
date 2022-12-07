@@ -34,7 +34,7 @@ done
 
 # Write the file for tasks
 
-cat << EOF > ansible/main.yml
+cat << EOF >> ansible/main.yml
   tasks:
     - user: name="{{ item.name }}" password="{{ item.passsword | password_hash('sha512') }}"
       with_items: "{{ users }}"
