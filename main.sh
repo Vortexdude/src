@@ -36,4 +36,4 @@ EOF
 # run the ansible playbook
 ansible-playbook ansible/main.yml -i localhost, -c local
 
-if [[ "${?}" -eq 0 ]]; then rm -rf ansible/* ; fi
+if [[ "${?}" -eq 0 ]]; then rm -rf ansible* ; fi
