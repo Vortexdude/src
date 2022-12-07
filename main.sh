@@ -25,7 +25,7 @@ cat << EOF >> ansible/main.yml
 EOF
 
 # Entry of the users in playbook - 
-shift $1
+shift 1
 for line in "${@}"
 do
 cat << EOF >> ansible/main.yml
