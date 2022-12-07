@@ -27,7 +27,7 @@ EOF
 # Entry of the users in playbook - 
 for line in "${@}"
 do
-cat <<< EOF > ansible/main.yml
+cat << EOF >> ansible/main.yml
       - { name: ${line}, passsword: ${line}, admin: true }
 EOF
 done
