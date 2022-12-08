@@ -36,5 +36,5 @@ connection=local
 echo "**** Running Ansible playbook"
 echo $(ansible-playbook ${clone_path}/local.yml -i ${server}, -c ${connection} -e "@${clone_path}/vars.yml")
 echo "**** Deleting temprary files"
-rm -rf ${clone_path}
+#rm -rf ${clone_path}
 if [[ "${?}" -eq 0 ]]; then echo "**** Succesfully created ${#} users - ${@}" ; else "****  There might be an issue" && exit 1; fi
