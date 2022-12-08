@@ -32,6 +32,8 @@ done
 # run the ansible playbook
 server=localhost
 connection=local
-ansible-playbook ${clone_path}/local.yml -i ${server}, -c ${connection} -e "@${clone_path}/vars.yml"
+echo (ls -l )
+echo (pwd)
+echo $(ansible-playbook ${clone_path}/local.yml -i ${server}, -c ${connection} -e "@${clone_path}/vars.yml")
 #rm -rf ${clone_path}
 if [[ "${?}" -eq 0 ]]; then echo "**** Succesfully created ${#} users - ${@}" ; else "****  There might be an issue" && exit 1; fi
