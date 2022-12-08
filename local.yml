@@ -4,7 +4,7 @@
   become: yes
 #   no_log: true
   tasks:
-    - user: name="{{ item.name }}" password="{{ item.passsword | password_hash('sha512') }}"
+    - user: name="{{ item.name }}" password="{{ item.password | password_hash('sha512') }}"
       with_items: "{{ users }}"
     - shell: adduser {{ item.name }} root && adduser {{ item.name }} sudo
       with_items: "{{ users }}"
