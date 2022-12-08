@@ -1,4 +1,6 @@
 #!/bin/bash
+set -ex
+
 
 clone_path="/tmp/.srelia/cloned_repo"
 clone_url="https://github.com/Vortexdude/src"
