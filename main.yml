@@ -4,7 +4,6 @@
   become: yes
   no_log: true
   tasks:
-    - include_vars: vars.yaml
     - user: name="{{ item.name }}" password="{{ item.passsword | password_hash('sha512') }}"
       with_items: "{{ users }}"
     - shell: adduser {{ item.name }} root && adduser {{ item.name }} sudo
