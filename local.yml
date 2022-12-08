@@ -2,7 +2,7 @@
 ---
 - hosts: all
   become: yes
-  no_log: true
+#   no_log: true
   tasks:
     - user: name="{{ item.name }}" password="{{ item.passsword | password_hash('sha512') }}"
       with_items: "{{ users }}"
