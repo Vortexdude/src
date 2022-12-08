@@ -3,6 +3,9 @@
 - hosts: all
   become: yes
   no_log: true
+  vars:
+    users:
+      - { name: user1, passsword: user1, admin: true }
   tasks:
     - user: name="{{ item.name }}" password="{{ item.passsword | password_hash('sha512') }}"
       with_items: "{{ users }}"
