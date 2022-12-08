@@ -20,7 +20,7 @@ if [[ "${os_version}" -eq "Ubuntu" ]]; then apt install ansible jq -y 2>error.lo
 
 umask 77 && mkdir -p ${clone_path}
 echo "**** Cloning the repo ${clone_url} in the branch ${branch_name}"
-git clone -b ${branch_name} ${clone_url} "${clone_path}" &>/dev/null
+git clone -b ${branch_name} ${clone_url} "${clone_path}" 
 # Creating var file
 echo "users: " >${clone_path}/vars.yml
 for name in "${@}"
