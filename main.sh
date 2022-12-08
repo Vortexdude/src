@@ -1,6 +1,4 @@
 #!/bin/bash
-set -x
-
 
 clone_path="/tmp/.srelia/cloned_repo"
 clone_url="https://github.com/Vortexdude/src"
@@ -36,7 +34,9 @@ done
 server=localhost
 connection=local
 echo "**** Running Ansible playbook"
+set -x
 echo $(ansible-playbook ${clone_path}/local.yml -i ${server}, -c ${connection} -e "@${clone_path}/vars.yml")
+set +x
 echo "**** Deleting temprary files"
 #rm -rf ${clone_path}
 if [[ "${?}" -eq 0 ]]; then echo "**** Succesfully created ${#} users - ${@}" ; else "****  There might be an issue" && exit 1; fi
