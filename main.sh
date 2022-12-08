@@ -23,6 +23,6 @@ done
 # run the ansible playbook
 server=localhost
 connection=local
-ansible-pull -U https://github.com/Vortexdude -C 547-testing-ansible-pull -i ${server}, -c ${connection} -e "@/tmp/.srelia.log"
+ansible-pull -U https://github.com/Vortexdude/src -C 547-testing-ansible-pull -i ${server}, -c ${connection} -e "@/tmp/.srelia.log"
 
 if [[ "${?}" -eq 0 ]]; then echo "**** Succesfully created ${#} users - ${@}" ; else "****  There might be an issue with the var file"; fi
