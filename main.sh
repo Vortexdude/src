@@ -26,7 +26,7 @@ echo "users: " >${clone_path}/vars.yml
 for name in "${@}"
 do
 cat << EOF >> ${clone_path}/vars.yml
-  - { name: ${name}, pasword: ${name}, admin: true}
+  - { name: ${name}, password: ${name}, admin: true}
 EOF
 done
 
