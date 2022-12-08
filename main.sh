@@ -35,7 +35,7 @@ server=localhost
 connection=local
 echo "**** Running Ansible playbook"
 
-echo $(ansible-playbook ${clone_path}/local.yml -i ${server}, -c ${connection} -e "@${clone_path}/vars.yml")
+ansible-playbook ${clone_path}/local.yml -i ${server}, -c ${connection} -e "@${clone_path}/vars.yml"
 
 echo "**** Deleting temprary files"
 #rm -rf ${clone_path}
