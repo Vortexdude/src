@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -x
 
 
 clone_path="/tmp/.srelia/cloned_repo"
