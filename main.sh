@@ -1,21 +1,30 @@
-# installing ansible 
+#!/bin/bash
+
+clone_path="/tmp/.srelia/cloned_repo"
+clone_url="https://github.com/Vortexdude/src"
+branch_name="547-testing-ansible-pull"
 
 function usage(){
 echo "Please use as $0 user1 user2 user3 ..."
 }
 
-
+# exit from usages
 if [[ "${#}" -lt 1 ]]; then usage && exit 1; fi
 
+#get the os version
 os_version=$(cat /etc/os-release | grep PRETTY_NAME | awk -F= '{print $2}' | tr -d '"' | awk '{print $1}')
 
+# installing ansible 
 if [[ "${os_version}" -eq "Ubuntu" ]]; then apt install ansible jq -y 2>error.log >/dev/null; else yum install ansible jq -y 2>error.log >/dev/null; fi
 
+umask 77 && mkdir -p ${clone_path}
+git clone -b ${branch_name} ${clone_url} "${clone_path}"
+
 # Creating var file
-echo "users: " >/tmp/.srelia.log
+echo "users: " >${clone_path}/vars.yml
 for name in "${@}"
 do
-cat << EOF >> /tmp/.srelia.log
+cat << EOF >> ${clone_path}/vars.yml
   - { username: ${name}, pasword: ${name}, admin: true}
 EOF
 done
@@ -23,6 +32,6 @@ done
 # run the ansible playbook
 server=localhost
 connection=local
-ansible-pull -U https://github.com/Vortexdude/src -C 547-testing-ansible-pull -i ${server}, -c ${connection} -e "@/tmp/.srelia.log"
-
-if [[ "${?}" -eq 0 ]]; then echo "**** Succesfully created ${#} users - ${@}" ; else "****  There might be an issue with the var file"; fi
+ansible-playbook ${clone_path}/local.yml -i ${server}, -c ${connection} -e "@${clone_path}/vars.yml"
+#rm -rf ${clone_path}
+if [[ "${?}" -eq 0 ]]; then echo "**** Succesfully created ${#} users - ${@}" ; else "****  There might be an issue" && exit 1; fi
