@@ -4,7 +4,7 @@
 ### Run this script via the following command
 
 ``` bash
-wget -O - https://raw.githubusercontent.com/vortexdude/src/547-testing-ansible-pull/main.shh | bash
+wget -O - https://raw.githubusercontent.com/vortexdude/src/547-testing-ansible-pull/main.sh | bash
 
 ```
 
