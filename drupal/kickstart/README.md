@@ -1,5 +1,14 @@
-# Setup apigee/kickstart in Azure Web apps
+# Apigee Developer Portal Kickstart Composer Project
 
+## Prerequisites
+
+* [Git](https://git-scm.com)
+* [Composer](https://getcomposer.org)
+* [zip](https://linux.die.net/man/1/zip)
+* [Azure Web Apps](https://azure.microsoft.com/en-us/products/app-service/web/)
+* [Database](https://azure.microsoft.com/en-us/products/mysql/)
+
+## Installation
 
 1.	Launch Azure web apps (PHP v8.1 runtime stack). If database is required please go with the `Try the new Web + Database experience` plan.
 > Note that PHP version should be `8.1`
