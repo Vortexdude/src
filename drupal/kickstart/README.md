@@ -1,4 +1,6 @@
-# Setup Drupal in Azure Web apps – 
+# Setup apigee/kickstart in Azure Web apps
+
+
 1.	Launch Azure web apps (PHP v8.1 runtime stack). If database is required please go with the `Try the new Web + Database experience` plan.
 > Note that PHP version should be `8.1`
 
@@ -9,7 +11,7 @@
 apt install -y git zip
 ```
 
-4.   Vaidate the installed package and php version should be v**8.1**.
+4.   Vaidate the installed package and php version.
 ``` bash
 php -v
 git --help
@@ -43,7 +45,7 @@ nano /home/default
 root /home/site/wwwroot/devportal/web;
 ```
 
-9.	In the web apps, data is not persistence accept the /home directory, so we will keep the nginx configuration inside it and copy the file into default ngnix configuration path after restarting the web server. so, for this go to the web apps configuration and paste the lines into there and save it. Web App > Configuration > General Settings > startup command
+9.	In the web apps, data is not persistence accept the **/home** directory, so we will keep the nginx configuration inside the home directory and copy the file into default ngnix configuration path after restarting the web server. Go to the web apps configuration and paste the lines into there and save it. **Web App** > **Configuration** > **General Settings** > **startup command**
 ``` bash
 cp /home/default /etc/nginx/sites-enabled/default; service nginx restart
 ```
