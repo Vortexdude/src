@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if ! [ $(id -u) == 0 ]; then
+  echo "Need to run the script as sudo!"
+  exit 1
+fi
+
 #all the roles are here
 roles="${@:-test_role}"
 
